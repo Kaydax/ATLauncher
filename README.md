@@ -8,6 +8,8 @@
 ATLauncher is a launcher for Minecraft which integrates multiple different modpacks to allow you to download and install
 modpacks easily and quickly.
 
+This fork of ATLauncher is a version that fixes curseforge and allows you to continue downloading modpacks without having to deal with it opening your browser and coming across broke mod versions and the likes
+
 ## Links
 
 -   [ATLauncher Website](https://atlauncher.com)
