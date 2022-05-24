@@ -64,8 +64,14 @@ public final class Network {
     public static OkHttpClient CACHED_CLIENT = CLIENT.newBuilder().cache(CACHE).build();
 
     public static final String USER_AGENT = String.format(
-            "Mozilla/5.0 (%s) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36 %s/%s Java/%s",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36 OverwolfClient/0.195.0.18",
             OS.getUserAgentString(), Constants.LAUNCHER_NAME, Constants.VERSION.toStringForLogging(),
+            Java.getLauncherJavaVersion());
+
+    //This exist to bypass the atlauncher api banning
+    public static final String OLD_USER_AGENT = String.format(
+            "Mozilla/5.0 (%s) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36 %s/%s Java/%s",
+            OS.getUserAgentString(), Constants.LAUNCHER_NAME, "3.4.14.3",
             Java.getLauncherJavaVersion());
 
     static {

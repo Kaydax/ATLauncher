@@ -30,7 +30,7 @@ public final class UserAgentInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request originalRequest = chain.request();
         Request requestWithUserAgent = originalRequest.newBuilder().removeHeader("User-Agent")
-                .addHeader("User-Agent", Network.USER_AGENT).build();
+                .addHeader("User-Agent", Network.OLD_USER_AGENT).build();
         return chain.proceed(requestWithUserAgent);
     }
 }

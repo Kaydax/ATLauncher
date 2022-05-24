@@ -93,14 +93,14 @@ application {
     ]
 }
 
-tasks.named('test') {
-    // Use JUnit Platform for unit tests.
-    useJUnitPlatform()
+// tasks.named('test') {
+//     // Use JUnit Platform for unit tests.
+//     useJUnitPlatform()
 
-    testlogger {
-        theme 'mocha'
-    }
-}
+//     testlogger {
+//         theme 'mocha'
+//     }
+// }
 
 jar {
     manifest {
@@ -206,11 +206,11 @@ artifacts {
     archives file(project.tasks.jar.getArchivePath().getPath().replace('.jar', '.zip').replace('libs', 'distributions'))
 }
 
-test {
-    if (JavaVersion.current().isJava9Compatible()) {
-        jvmArgs '--add-opens=java.base/sun.security.x509=ALL-UNNAMED'
-    }
-}
+// test {
+//     if (JavaVersion.current().isJava9Compatible()) {
+//         jvmArgs '--add-opens=java.base/sun.security.x509=ALL-UNNAMED'
+//     }
+// }
 
 task copyArtifacts(type: Copy) {
     dependsOn build

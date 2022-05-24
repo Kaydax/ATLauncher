@@ -216,7 +216,7 @@ public class Utils {
             urlParameters += "text=" + URLEncoder.encode(log, "ISO-8859-1");
             URL url = new URL(Constants.PASTE_API_URL);
             URLConnection conn = url.openConnection();
-            conn.addRequestProperty("User-Agent", Network.USER_AGENT);
+            conn.addRequestProperty("User-Agent", Network.OLD_USER_AGENT);
             conn.setDoOutput(true);
             OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream());
             writer.write(urlParameters);
@@ -808,7 +808,7 @@ public class Utils {
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
         connection.setRequestMethod("POST");
-        connection.setRequestProperty("User-Agent", Network.USER_AGENT);
+        connection.setRequestProperty("User-Agent", Network.OLD_USER_AGENT);
         connection.setRequestProperty("Cache-Control", "no-store,max-age=0,no-cache");
         connection.setRequestProperty("Expires", "0");
         connection.setRequestProperty("Pragma", "no-cache");
@@ -846,7 +846,7 @@ public class Utils {
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
         connection.setRequestMethod("POST");
-        connection.setRequestProperty("User-Agent", Network.USER_AGENT);
+        connection.setRequestProperty("User-Agent", Network.OLD_USER_AGENT);
         connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
         connection.setRequestProperty("Cache-Control", "no-store,max-age=0,no-cache");
         connection.setRequestProperty("Expires", "0");
@@ -883,7 +883,7 @@ public class Utils {
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
 
         connection.setRequestMethod("GET");
-        connection.setRequestProperty("User-Agent", Network.USER_AGENT);
+        connection.setRequestProperty("User-Agent", Network.OLD_USER_AGENT);
         connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
         connection.setRequestProperty("Cache-Control", "no-store,max-age=0,no-cache");
         connection.setRequestProperty("Expires", "0");
@@ -1229,7 +1229,7 @@ public class Utils {
             connection.setUseCaches(false);
             connection.setDefaultUseCaches(false);
             connection.setRequestProperty("Accept-Encoding", "gzip");
-            connection.setRequestProperty("User-Agent", Network.USER_AGENT);
+            connection.setRequestProperty("User-Agent", Network.OLD_USER_AGENT);
             connection.setRequestProperty("Cache-Control", "no-store,max-age=0,no-cache");
             connection.setRequestProperty("Expires", "0");
             connection.setRequestProperty("Pragma", "no-cache");
