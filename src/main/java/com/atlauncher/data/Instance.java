@@ -1274,7 +1274,7 @@ public class Instance extends MinecraftVersion {
             dialog.setIndeterminate();
             File fileLocation = downloadLocation.toFile();
             if (!fileLocation.exists()) {
-                File downloadsFolderFile = new File(FileSystem.USER_DOWNLOADS.toFile(), file.fileName);
+                File downloadsFolderFile = new File(FileSystem.getUserDownloadsPath().toFile(), file.fileName);
                 if (downloadsFolderFile.exists()) {
                     Utils.moveFile(downloadsFolderFile, fileLocation, true);
                 }
@@ -1295,13 +1295,18 @@ public class Instance extends MinecraftVersion {
                                         file.fileName)
                                         + "<br/><br/>" + GetText.tr("Please save this file to the following location")
                                         + "<br/><br/>"
-                                        + (OS.isUsingMacApp() ? FileSystem.USER_DOWNLOADS.toFile().getAbsolutePath()
-                                                : FileSystem.DOWNLOADS.toAbsolutePath().toString() + " or<br/>"
-                                                        + FileSystem.USER_DOWNLOADS.toFile()))
+                                        + (OS.isUsingMacApp()
+                                                ? FileSystem.getUserDownloadsPath().toFile().getAbsolutePath()
+                                                : (OS.isUsingFlatpak()
+                                                        ? FileSystem.DOWNLOADS.toAbsolutePath().toString()
+                                                        : FileSystem.DOWNLOADS.toAbsolutePath().toString()
+                                                                + " or<br/>"
+                                                                + FileSystem.getUserDownloadsPath().toFile())))
                                         .build())
                                 .addOption(GetText.tr("Open Folder"), true)
                                 .addOption(GetText.tr("I've Downloaded This File")).setType(DialogManager.INFO)
-                                .showWithFileMonitoring(fileLocation, downloadsFolderFile, file.fileLength, 1);
+                                .showWithFileMonitoring(fileLocation, OS.isUsingFlatpak() ? null : downloadsFolderFile,
+                                        file.fileLength, 1);
 
                         if (retValue == DialogManager.CLOSED_OPTION) {
                             return;
@@ -1320,7 +1325,7 @@ public class Instance extends MinecraftVersion {
                         if (zipAddedFile.exists()) {
                             Utils.moveFile(zipAddedFile, fileLocation, true);
                         } else {
-                            zipAddedFile = new File(FileSystem.USER_DOWNLOADS.toFile(), file.fileName + ".zip");
+                            zipAddedFile = new File(FileSystem.getUserDownloadsPath().toFile(), file.fileName + ".zip");
                             if (zipAddedFile.exists()) {
                                 Utils.moveFile(zipAddedFile, fileLocation, true);
                             }
