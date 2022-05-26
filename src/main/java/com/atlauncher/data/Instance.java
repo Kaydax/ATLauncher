@@ -1272,9 +1272,10 @@ public class Instance extends MinecraftVersion {
             }
 
             dialog.setIndeterminate();
+            String filename = file.fileName.replace(" ", "+");
             File fileLocation = downloadLocation.toFile();
             if (!fileLocation.exists()) {
-                File downloadsFolderFile = new File(FileSystem.getUserDownloadsPath().toFile(), file.fileName);
+                File downloadsFolderFile = new File(FileSystem.getUserDownloadsPath().toFile(), filename);
                 if (downloadsFolderFile.exists()) {
                     Utils.moveFile(downloadsFolderFile, fileLocation, true);
                 }
@@ -1283,16 +1284,15 @@ public class Instance extends MinecraftVersion {
                     int retValue = 1;
                     do {
                         if (retValue == 1) {
-                            OS.openWebBrowser(String.format("https://www.curseforge.com/minecraft/%s/%s/download/%d",
-                                    mod.getClassUrlSlug(), mod.slug, file.id));
+                            OS.openWebBrowser(mod.getBrowserDownloadUrl(file));
                         }
 
                         retValue = DialogManager.optionDialog()
                                 .setTitle(GetText.tr("Downloading") + " "
-                                        + file.fileName)
+                                        + filename)
                                 .setContent(new HTMLBuilder().center().text(GetText.tr(
                                         "Browser opened to download file {0}",
-                                        file.fileName)
+                                        filename)
                                         + "<br/><br/>" + GetText.tr("Please save this file to the following location")
                                         + "<br/><br/>"
                                         + (OS.isUsingMacApp()
@@ -1390,7 +1390,7 @@ public class Instance extends MinecraftVersion {
                 mod.getRootCategoryId() == Constants.CURSEFORGE_RESOURCE_PACKS_SECTION_ID ? Type.resourcepack
                         : (mod.getRootCategoryId() == Constants.CURSEFORGE_WORLDS_SECTION_ID ? Type.worlds
                                 : Type.mods),
-                null, mod.summary, false, true, true, mod, file));
+                null, mod.summary, false, true, true, false, mod, file));
 
         this.save();
 
@@ -1453,7 +1453,7 @@ public class Instance extends MinecraftVersion {
 
         // add this mod
         this.launcher.mods.add(new DisableableMod(mod.title, version.name, true, fileToDownload.filename, Type.mods,
-                null, mod.description, false, true, true, mod, version));
+                null, mod.description, false, true, true, false, mod, version));
 
         this.save();
 
