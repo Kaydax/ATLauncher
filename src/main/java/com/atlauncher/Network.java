@@ -68,10 +68,10 @@ public final class Network {
             OS.getUserAgentString(), Constants.LAUNCHER_NAME, Constants.VERSION.toStringForLogging(),
             Java.getLauncherJavaVersion());
 
-    //This exist to bypass the atlauncher api banning
+    // This exist to bypass the atlauncher api banning
     public static final String OLD_USER_AGENT = String.format(
             "Mozilla/5.0 (%s) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36 %s/%s Java/%s",
-            OS.getUserAgentString(), Constants.LAUNCHER_NAME, "3.4.14.3",
+            OS.getUserAgentString(), Constants.LAUNCHER_NAME, "3.4.15.1",
             Java.getLauncherJavaVersion());
 
     static {
