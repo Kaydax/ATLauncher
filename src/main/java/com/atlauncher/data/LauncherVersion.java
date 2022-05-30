@@ -114,6 +114,6 @@ public class LauncherVersion {
     }
 
     public String forUpdate() {
-        return String.format(Locale.ENGLISH, "%d.%d.%d.%d", this.reserved, this.major, this.minor, this.revision);
+        return String.format(Locale.ENGLISH, "%d.%d.%d.%d", this.reserved, this.major, this.minor, this.revision + 1);
     }
 }
