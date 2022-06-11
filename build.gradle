@@ -236,6 +236,9 @@ task copyArtifacts(type: Copy) {
     from file(project.tasks.jar.getArchivePath().getPath().replace('.jar', '.exe').replace('libs', 'launch4j'))
     from file(project.tasks.jar.getArchivePath().getPath().replace('.jar', '.zip').replace('libs', 'distributions'))
     into "${projectDir}/dist"
+    rename("ATLauncher-${project.version}.exe", "ATLauncher.exe")
+    rename("ATLauncher-${project.version}.jar", "ATLauncher.jar")
+    rename("ATLauncher-${project.version}.zip", "ATLauncher.zip")
 }
 
 task downloadNewerUniversalJavaApplicationStub(type: Download) {
