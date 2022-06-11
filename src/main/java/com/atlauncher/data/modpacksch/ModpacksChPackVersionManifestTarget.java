@@ -15,22 +15,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package com.atlauncher.data.modrinth;
+package com.atlauncher.data.modpacksch;
 
-import java.util.Map;
-
-public class ModrinthFile {
-    public Map<String, String> hashes;
-    public String url;
-    public String filename;
-    public boolean primary;
-    public Long size;
-
-    public String toString() {
-        if (primary) {
-            return String.format("%s (Primary)", this.filename);
-        }
-
-        return this.filename;
-    }
+public class ModpacksChPackVersionManifestTarget {
+    public String version;
+    public int id;
+    public String name;
+    public ModpacksChPackVersionManifestTargetType type;
+    public int updated;
 }

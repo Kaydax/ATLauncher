@@ -15,22 +15,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package com.atlauncher.data.modrinth;
+package com.atlauncher.data.modpacksch;
 
-import java.util.Map;
+import com.google.gson.annotations.SerializedName;
 
-public class ModrinthFile {
-    public Map<String, String> hashes;
-    public String url;
-    public String filename;
-    public boolean primary;
-    public Long size;
+public enum ModpacksChPackVersionManifestFileType {
+    @SerializedName("config")
+    CONFIG,
 
-    public String toString() {
-        if (primary) {
-            return String.format("%s (Primary)", this.filename);
-        }
+    @SerializedName("mod")
+    MOD,
 
-        return this.filename;
-    }
+    @SerializedName("resource")
+    RESOURCE,
+
+    @SerializedName("script")
+    SCRIPT
 }
