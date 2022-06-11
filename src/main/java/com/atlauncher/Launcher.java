@@ -34,6 +34,8 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import org.mini2Dx.gettext.GetText;
+
 import com.atlauncher.builders.HTMLBuilder;
 import com.atlauncher.constants.Constants;
 import com.atlauncher.data.DownloadableFile;
@@ -64,8 +66,6 @@ import com.atlauncher.utils.OS;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-
-import org.mini2Dx.gettext.GetText;
 
 import net.arikia.dev.drpc.DiscordRPC;
 import okhttp3.OkHttpClient;
@@ -174,7 +174,7 @@ public class Launcher {
                     GetText.tr("Downloading Launcher Update"));
             progressDialog.addThread(new Thread(() -> {
                 com.atlauncher.network.Download download = com.atlauncher.network.Download.build()
-                        .setUrl(String.format("https://github.com/Kaydax/ATLauncher-Curseforge-Fix/releases/latest/download/%s-%s.%s", Constants.LAUNCHER_NAME, Constants.VERSION.forUpdate(), toget))
+                        .setUrl(String.format("https://github.com/Kaydax/ATLauncher-Curseforge-Fix/releases/latest/download/ATLauncher.%s", toget))
                         .withHttpClient(Network.createProgressClient(progressDialog)).downloadTo(newFile.toPath());
 
                 progressDialog.setTotalBytes(download.getFilesize());
