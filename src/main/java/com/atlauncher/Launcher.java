@@ -42,9 +42,9 @@ import com.atlauncher.data.DownloadableFile;
 import com.atlauncher.data.LauncherVersion;
 import com.atlauncher.gui.dialogs.ProgressDialog;
 import com.atlauncher.gui.tabs.InstancesTab;
-import com.atlauncher.gui.tabs.NewsTab;
 import com.atlauncher.gui.tabs.PacksBrowserTab;
 import com.atlauncher.gui.tabs.ServersTab;
+import com.atlauncher.gui.tabs.news.NewsTab;
 import com.atlauncher.managers.AccountManager;
 import com.atlauncher.managers.ConfigManager;
 import com.atlauncher.managers.CurseForgeUpdateManager;
@@ -108,6 +108,8 @@ public class Launcher {
             MinecraftManager.loadJavaRuntimes();
         });
 
+        AccountManager.loadAccounts(); // Load the saved Accounts
+
         PackManager.loadPacks(); // Load the Packs available in the Launcher
 
         PackManager.loadUsers(); // Load the Testers and Allowed Players for the packs
@@ -115,8 +117,6 @@ public class Launcher {
         InstanceManager.loadInstances(); // Load the users installed Instances
 
         ServerManager.loadServers(); // Load the users installed servers
-
-        AccountManager.loadAccounts(); // Load the saved Accounts
 
         PackManager.removeUnusedImages(); // remove unused pack images
 
