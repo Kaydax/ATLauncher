@@ -174,7 +174,9 @@ public class Launcher {
                     GetText.tr("Downloading Launcher Update"));
             progressDialog.addThread(new Thread(() -> {
                 com.atlauncher.network.Download download = com.atlauncher.network.Download.build()
-                        .setUrl(String.format("https://github.com/Kaydax/ATLauncher-Curseforge-Fix/releases/latest/download/ATLauncher.%s", toget))
+                        .setUrl(String.format(
+                                "https://github.com/Kaydax/ATLauncher-Curseforge-Fix/releases/latest/download/ATLauncher.%s",
+                                toget))
                         .withHttpClient(Network.createProgressClient(progressDialog)).downloadTo(newFile.toPath());
 
                 progressDialog.setTotalBytes(download.getFilesize());
@@ -353,7 +355,8 @@ public class Launcher {
             if (hasUpdatedFiles()) {
                 downloadUpdatedFiles(); // Downloads updated files on the server
             }
-            checkForLauncherUpdate();
+
+            // checkForLauncherUpdate();
             checkForExternalPackUpdates();
 
             ConfigManager.loadConfig(); // Load the config
