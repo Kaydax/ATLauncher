@@ -92,7 +92,9 @@ public class GeneralSettingsTab extends AbstractSettingsTab {
         JPanel languagePanel = new JPanel();
         languagePanel.setLayout(new BoxLayout(languagePanel, BoxLayout.X_AXIS));
 
-        language = new JComboBox<>(Language.locales.stream().map(Locale::getDisplayName).toArray(String[]::new));
+        language = new JComboBox<>(
+                Language.locales.stream().filter(l -> l == Locale.ENGLISH || Language.languages.containsValue(l))
+                        .map(Locale::getDisplayName).toArray(String[]::new));
         language.setSelectedItem(Language.selected);
         languagePanel.add(language);
 
@@ -522,6 +524,10 @@ public class GeneralSettingsTab extends AbstractSettingsTab {
     @SuppressWarnings("unchecked")
     public boolean themeChanged() {
         return !((ComboItem<String>) theme.getSelectedItem()).getValue().equalsIgnoreCase(App.settings.theme);
+    }
+
+    public boolean languageChanged() {
+        return !((String) language.getSelectedItem()).equalsIgnoreCase(App.settings.language);
     }
 
     public boolean needToReloadInstancesPanel() {
